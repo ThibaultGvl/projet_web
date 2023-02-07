@@ -1,0 +1,49 @@
+body {
+    font-size: 1em;
+}
+.page {
+    display: flex;
+}
+aside {
+    width: 15%;
+    padding-right: 0.5rem;
+    margin-right: 0.5rem;
+    box-shadow: inset 0.5rem 0.5rem 5px -5px #29627e;
+}
+
+article {
+    width: 85%;
+    flex: content;
+}
+
+.nav_elem {
+    color: black;
+    size: 1rem;
+}
+
+.nav_elem:hover {
+    color: #d67417;
+}
+
+form {
+    display: table;
+}
+div.form_div {
+    display: table-row;
+}
+label,
+input {
+    display: table-cell;
+    margin-bottom: 10px;
+}
+
+label {
+    padding-right: 10px;
+}
+
+footer {
+    display: flex;
+    padding: 5px;
+    background-color: #d67417;
+    color: #fff;
+}

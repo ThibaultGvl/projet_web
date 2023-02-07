@@ -7,17 +7,44 @@
     <body>
         <header>
             <h1>Titre Important</h1>
+            <img src="" alt="">
         </header>
-        
-        <menu>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </menu>
-        
+        <div class="page">
+            <aside>
+                <nav>
+                    <ul>
+                        <li><a class="nav_elem" href="#.header">Haut de page</a></li>
+                        <li><a class="nav_elem" href="#.article">Article</a></li>
+                        <li> <a class="nav_elem" href="#.footer">Contact</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            
+            <article>
+                <p>
+                    blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla<br/>
+                    blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla
+                </p>
+            </article>
+        </div>
+
         <footer>
-            <p>Contact :  <a href="mailto:thibault.grivel@etu.unistra.fr"></a></p>
+            <form action="mailto:thibault.grivel@etu.unistra.fr" method="get" enctype="text/plain">
+                <div class="form_div">
+                    <label for="name">Entrez votre nom : </label>
+                    <input type="text" name="name" required>
+                  </div>
+                  <div class="form_div">
+                    <label for="email">Entrez votre email: </label>
+                    <input type="email" name="email" required>
+                  </div>
+                  <div class="form_div">
+                    <label for="text">Entrez un commentaire : </label>
+                    <input type="text" name="commentaire" required>
+                  </div>
+                  <div class="form_div">
+                    <input type="submit" value="Envoyer">
+                  </div>
+            </form>
         </footer>
     </body>

@@ -3,6 +3,8 @@ body {
 }
 .page {
     display: flex;
+    overflow: auto;
+    text-align: justify;
 }
 aside {
     width: 15%;
@@ -11,9 +13,35 @@ aside {
     box-shadow: inset 0.5rem 0.5rem 5px -5px #29627e;
 }
 
-article {
+main {
+    grid-template-columns: repeat(2, 50px 1fr) 100px;
     width: 85%;
+}
+
+section {
     flex: content;
+    display : flex;
+}
+
+.elem {
+    grid-row: 2;
+    background-color: skyblue;
+    border-radius: 10px;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+    margin : 15px;
+    width: 33%;
+}
+
+.img_elem {
+    width: 50%;
+}
+
+.tit_elem {
+    width: 25%;
+}
+
+.desc_elem {
+    width: 25%;
 }
 
 .nav_elem {

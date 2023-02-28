@@ -2,6 +2,15 @@ body {
     font-size: 1em;
     font-family: 'Libre Baskerville', serif;
 }
+
+.icon {
+    width: 10%;
+}
+
+h1 {
+    text-align: center;
+}
+
 .page {
     display: flex;
     overflow: auto;
@@ -12,7 +21,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #D9EDFF;
+    background-color: #fff;
 }
 
 .nav_list{
@@ -44,7 +53,7 @@ section {
 
 .elem {
     grid-row: 2;
-    background-color: #D9EDFF;
+    background-color: #FFF;
     border-radius: 10px;
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
     margin : 15px;
@@ -61,6 +70,17 @@ section {
 
 .desc_elem {
     width: 25%;
+}
+
+#affich_btn {
+    grid-row: 2;
+    font-size: 2rem;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+    width: 33%;
+    margin: 0 auto;
+    display: block;
 }
 
 form {
@@ -82,5 +102,6 @@ label {
 footer {
     display: flex;
     padding: 5px;
-    background-color: #D9EDFF;
+    background-color: #FFF;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
 }

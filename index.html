@@ -1,7 +1,8 @@
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8"/>
-        <title>Page Principale</title>
+        <title>Site de critique musicale</title>
+        <link rel="icon" href="../projet_web/assets/img/music-band.png">
         <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="script" href="assets/js/script.js">
@@ -11,67 +12,67 @@
             <nav>
                 <img class="icon" src="../projet_web/assets/img/music-band.png" alt="Icone groupe de musique"/>
                 <ul class="nav_list">
-                    <li><a class="nav_elem" href="#.header">Haut de page</a></li>
-                    <li><a class="nav_elem" href="#.main">Article</a></li>
-                    <li> <a class="nav_elem" href="#.footer">Contact</a></li>
+                    <li><a class="nav_elem" href="./index.html">Accueil</a></li>
+                    <li><a class="nav_elem" href="./details.html">Album au hasard</a></li>
+                    <li> <a class="nav_elem" href="./index.html">Contact</a></li>
                 </ul>
             </nav>
         </header>
-        <h1>
+        <h1 id="welcome">
             Bienvenue sur mon site de critique musicale !
         </h1>
         <div class="page">
             <main>
                 <section class="sect">
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
+                    </a>
                 </section>
                 <section>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
+                    </a>
                 </section>
                 <section>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
-                    <div class="elem">
-                        <img class="img_elem" src="" alt="">
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
-                    </div>
+                    </a>
                 </section>
                 <button id="affich_btn">Afficher plus d'albums</button>
             </main>
@@ -79,18 +80,18 @@
         </div>
 
         <footer>
-            <form action="mailto:thibault.grivel@etu.unistra.fr" method="get" enctype="text/plain">
+            <form action="mailto:thibault.grivel@etu.unistra.fr" method="GET" enctype="text/plain">
                 <div class="form_div">
                     <label for="name">Entrez votre nom : </label>
                     <input type="text" name="name" required>
                   </div>
                   <div class="form_div">
                     <label for="email">Entrez votre email: </label>
-                    <input type="email" name="email" required>
+                    <input id="email" type="email" name="email" required>
                   </div>
                   <div class="form_div">
                     <label for="text">Entrez un commentaire : </label>
-                    <input type="text" name="commentaire" required>
+                    <input id="commentaire" type="text" name="commentaire" required>
                   </div>
                   <div class="form_div">
                     <input type="submit" value="Envoyer">

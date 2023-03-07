@@ -4,11 +4,14 @@ body {
 }
 
 .icon {
-    width: 10%;
+    width: 5%;
+    filter: invert(1);
 }
 
-h1 {
+#welcome {
     text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .page {
@@ -21,7 +24,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
+    background-color: #000;
 }
 
 .nav_list{
@@ -30,13 +33,14 @@ nav {
 }
 
 .nav_elem {
-    color: black;
+    color: white;
     size: 1rem;
     padding: 5px 14px;
+    text-decoration: none;
 }
 
 .nav_elem:hover {
-    color: #5155FA;
+    color: #ffcd00;
 }
 
 main {
@@ -55,9 +59,16 @@ section {
     grid-row: 2;
     background-color: #FFF;
     border-radius: 10px;
-    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     margin : 15px;
     width: 33%;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    color: #000;
+}
+
+.elem:hover {
+    box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 .img_elem {
@@ -66,10 +77,12 @@ section {
 
 .tit_elem {
     width: 25%;
+    text-align: center;
 }
 
 .desc_elem {
     width: 25%;
+    text-align: center;
 }
 
 #affich_btn {
@@ -81,7 +94,14 @@ section {
     width: 33%;
     margin: 0 auto;
     display: block;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+
+#affich_btn:hover {
+    background-color: #000;
+    color: #ffcd00;
+  }
 
 form {
     display: table;
@@ -104,4 +124,21 @@ footer {
     padding: 5px;
     background-color: #FFF;
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+#section_presentation {
+    display: flex;
+}
+
+#img_album {
+    width: 15%;
+}
+
+#title_album {
+    width: 75%;
+    text-align: center;
+}
+
+#description_album {
+    text-align: center;
 }

@@ -50,13 +50,12 @@ main {
     margin-right: auto;
 }
 
-section {
+.bloc {
     flex: content;
     display : flex;
 }
 
 .elem {
-    grid-row: 2;
     background-color: #FFF;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -110,13 +109,17 @@ div.form_div {
     display: table-row;
 }
 label,
-input {
+input, .text_error {
     display: table-cell;
     margin-bottom: 10px;
 }
 
 label {
     padding-right: 10px;
+}
+
+input {
+    
 }
 
 footer {
@@ -127,11 +130,12 @@ footer {
 }
 
 #section_presentation {
-    display: flex;
+    display : flex;
 }
 
 #img_album {
     width: 15%;
+    
 }
 
 #title_album {
@@ -140,5 +144,7 @@ footer {
 }
 
 #description_album {
+    margin-left: 15%;
+    width: 75%;
     text-align: center;
 }

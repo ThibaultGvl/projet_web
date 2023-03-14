@@ -10,7 +10,7 @@
     <body>
         <header>
             <nav>
-                <img class="icon" src="../projet_web/assets/img/music-band.png" alt="Icone groupe de musique"/>
+                <img class="icon" src="assets/img/music-band.png" alt="Icone groupe de musique"/>
                 <ul class="nav_list">
                     <li><a class="nav_elem" href="./index.html">Accueil</a></li>
                     <li><a class="nav_elem" href="./details.html">Album au hasard</a></li>
@@ -25,51 +25,51 @@
             <main>
                 <section class="bloc">
                     <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
                     </a>
                     <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
                     </a>
                     <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
-                        <h2 class="tit_elem">Element1</h2>
-                        <p class="desc_elem">Description rapide de l'élément</p>
-                    </a>
-                </section>
-                <section class="bloc">
-                    <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
-                        <h2 class="tit_elem">Element1</h2>
-                        <p class="desc_elem">Description rapide de l'élément</p>
-                    </a>
-                    <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
-                        <h2 class="tit_elem">Element1</h2>
-                        <p class="desc_elem">Description rapide de l'élément</p>
-                    </a>
-                    <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
                     </a>
                 </section>
                 <section class="bloc">
                     <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
                     </a>
                     <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
                     </a>
                     <a class="elem" href="details.html">
-                        <img class="img_elem" src="../projet_web/assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <h2 class="tit_elem">Element1</h2>
+                        <p class="desc_elem">Description rapide de l'élément</p>
+                    </a>
+                </section>
+                <section class="bloc">
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <h2 class="tit_elem">Element1</h2>
+                        <p class="desc_elem">Description rapide de l'élément</p>
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
+                        <h2 class="tit_elem">Element1</h2>
+                        <p class="desc_elem">Description rapide de l'élément</p>
+                    </a>
+                    <a class="elem" href="details.html">
+                        <img class="img_elem" src="assets/img/disque-vinyle.jpg" alt="Pochette de l'album">
                         <h2 class="tit_elem">Element1</h2>
                         <p class="desc_elem">Description rapide de l'élément</p>
                     </a>

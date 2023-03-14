@@ -15,9 +15,9 @@ class Album {
 		$this->_uri = $uri;
 		insertAlbum($this);
 	}
-	}
+}
 
-	class Traduction {
+class Traduction {
 	private $_id = NULL;
 	private $_fr;
 	private $_en;
@@ -27,9 +27,9 @@ class Album {
 		$this->_en = $en;
 		insertTraduction($this);
 	}
-	}
+}
 
-	class BDD {
+class BDD {
 
 	private $pdo;
 
@@ -76,9 +76,5 @@ class Album {
 			':uri' => $album->_uri,
 		]);
 		$album->_id = $this->pdo->lastInsertId();
-	}
-
-	public function prepopulateDb() {
-
 	}
 }

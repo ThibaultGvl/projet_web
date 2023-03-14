@@ -10,7 +10,7 @@
 <body>
     <header>
         <nav>
-            <img class="icon" src="assets/img/music-band" alt="Icone groupe de musique"/>
+            <img class="icon" src="assets/img/music-band.png" alt="Icone groupe de musique"/>
             <ul class="nav_list">
                 <li><a class="nav_elem" href="./index.html">Accueil</a></li>
                 <li><a class="nav_elem" href="./details.html">Album au hasard</a></li>

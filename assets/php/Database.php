@@ -2,7 +2,7 @@
 class Album {
 	private $_id = NULL;
 	private $_title;
-	private $_artist:
+	private $_artist;
 	private $_decription;
 	private $_rank;
 	private $_uri;

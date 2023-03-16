@@ -9,14 +9,7 @@
 </head>
 <body>
     <header>
-        <nav>
-            <img class="icon" src="assets/img/music-band.png" alt="Icone groupe de musique"/>
-            <ul class="nav_list">
-                <li><a class="nav_elem" href="./index.html">Accueil</a></li>
-                <li><a class="nav_elem" href="./details.html">Album au hasard</a></li>
-                <li> <a class="nav_elem" href="./index.html">Contact</a></li>
-            </ul>
-        </nav>
+        <?php include 'assets/php/header.php'?>
     </header>
 
     <article>
@@ -26,5 +19,6 @@
         </section>
         <p id="description_album">Description détaillée de l'album</p>
     </article>
-
+	
+	<?php include 'assets/php/footer.php'?>
 </body>

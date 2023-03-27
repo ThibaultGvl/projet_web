@@ -26,14 +26,17 @@
     ?>
         <div class="page">
             <main>
-                <?php for($bloc = 1; $bloc < 4; $bloc++): ?>
+                <?php for ($sec = 1; $sec < 4; $sec++): ?>
                 <section class="bloc">
-                    <?php for($elem = 0; $elem < 3; $elem++): ?> 
-                    <a class="elem" href="details.php?id=<?php echo $album['_id'];?>">
-                        <img class="img_elem" src=<?php echo $album['_uri']; ?> alt="Pochette de l'album">
-                        <h2 class="tit_elem"><?php echo $album['_title']; ?></h2>
-                        <p class="desc_elem"><?php echo $album['_description']; ?></p>
+                   <?php for($elem = 0; $elem < 3; $elem++): ?> 
+                   <?php $index = ($sec - 1) * 3 + $elem; ?>
+                   <?php if (isset($albums[$index])): ?>
+                    <a class="elem" href="details.php?id=<?php echo $albums[$sec*$elem]->getId();?>">
+                        <img class="img_elem" src=<?php echo $albums[$sec*$elem]->getUri(); ?> alt="Pochette de l'album">
+                        <h2 class="tit_elem"><?php echo $albums[$sec*$elem]->getTitle(); ?></h2>
+                        <p class="desc_elem"><?php echo $albums[$sec*$elem]->getDescription(); ?></p>
                     </a>
+                    <?php endif; ?>
                     <?php endfor; ?>
                 </section>
                 <?php endfor; ?>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8"/>
     <title>Site de critique musicale</title>
@@ -8,9 +9,8 @@
     <script src="assets/js/script.js" defer></script>
 </head>
 <body>
-    <header>
-        <?php include 'assets/php/header.php'?>
-    </header>
+    
+    <?php include 'assets/php/header.php'?>
 
     <article>
         <section id="section_presentation">
@@ -22,3 +22,4 @@
 	
 	<?php include 'assets/php/footer.php'?>
 </body>
+</html>

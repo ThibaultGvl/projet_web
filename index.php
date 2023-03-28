@@ -9,38 +9,50 @@
         <script src="assets/js/script.js" defer></script>
     </head>
     <body>
-        <?php include 'assets/php/header.php'?>
+        <?php 
+            include 'assets/php/Traduction.php';
+            include 'assets/php/header.php';
+            require_once 'assets/php/Database.php';
+            $db = new Database();
+            $albums = $db->getAlbums();
+            $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        ?>
         <h1 id="welcome">
-            Bienvenue sur mon site de critique musicale !
+            <?php
+                $welcomeText = new Traduction("Bienvenue sur mon site de critique musicale !", "Welcome to my music review website!");
+                if ($userLang == 'fr') {
+                    echo $welcomeText->getFr();
+                } else {
+                    echo $welcomeText->getEn();
+                } 
+            ?>
         </h1>
-        <?php
-        // Importer la classe Database
-        require_once 'assets/php/Database.php';
-
-    // Créer une instance de la classe Database
-    $db = new Database();
-
-    // Récupérer tous les albums de la base de données
-    $albums = $db->getAlbums();
-
-    ?>
         <div class="page">
             <main>
                 <?php for ($sec = 1; $sec < 4; $sec++): ?>
-                <section class="bloc">
-                   <?php for($elem = 0; $elem < 3; $elem++): ?> 
-                   <?php $index = ($sec - 1) * 3 + $elem; ?>
-                   <?php if (isset($albums[$index])): ?>
-                    <a class="elem" href="details.php?id=<?php echo $albums[$sec*$elem]->getId();?>">
-                        <img class="img_elem" src=<?php echo $albums[$sec*$elem]->getUri(); ?> alt="Pochette de l'album">
-                        <h2 class="tit_elem"><?php echo $albums[$sec*$elem]->getTitle(); ?></h2>
-                        <p class="desc_elem"><?php echo $albums[$sec*$elem]->getDescription(); ?></p>
-                    </a>
-                    <?php endif; ?>
-                    <?php endfor; ?>
-                </section>
+                    <section class="bloc">
+                        <?php for($elem = 0; $elem < 3; $elem++): ?> 
+                            <?php $index = ($sec - 1) * 3 + $elem; ?>
+                            <?php if (isset($albums[$index])): ?>
+                                <a class="elem" href="details.php?id=<?php echo $albums[$index]->getId();?>">
+                                    <img class="img_elem" src=<?php echo $albums[$index]->getUri(); ?> alt="Pochette de l'album">
+                                    <h2 class="tit_elem"><?php echo $albums[$index]->getTitle(); ?></h2>
+                                    <p class="desc_elem"><?php echo $albums[$index]->getDescription(); ?></p>
+                                </a>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    </section>
                 <?php endfor; ?>
-                <button id="affich_btn">Afficher plus d'albums</button>
+                <button id="affich_btn">
+                    <?php
+                        $affich_btn_text = new Traduction("Afficher plus d'albums", "See more albums");
+                        if ($userLang == 'fr') {
+                            echo $affich_btn_text->getFr();
+                        } else {
+                            echo $affich_btn_text->getEn();
+                        } 
+                    ?>
+                </button>
             </main>
             
         </div>

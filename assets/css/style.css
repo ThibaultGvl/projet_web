@@ -52,7 +52,7 @@ main {
 
 .bloc {
     flex: content;
-    display : flex;
+    display : flex
 }
 
 .elem {
@@ -71,16 +71,14 @@ main {
 }
 
 .img_elem {
-    width: 50%;
+    width: 100%;
 }
 
 .tit_elem {
-    width: 25%;
     text-align: center;
 }
 
 .desc_elem {
-    width: 25%;
     text-align: center;
 }
 

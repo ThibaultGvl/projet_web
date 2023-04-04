@@ -1,7 +1,6 @@
 <?php
 
 require_once 'Album.php';
-//require_once 'Traduction.php';
 
 class Database {
 
@@ -13,7 +12,7 @@ class Database {
 
 	private function connect() {
 		try {
-			$this->pdo = new PDO('sqlite:./database.db');
+			$this->pdo = new PDO('sqlite:./assets/php/db/database.db');
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$this->pdo->query('CREATE TABLE IF NOT EXISTS albums (
 				id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,32 +22,12 @@ class Database {
 				ranking INTEGER NOT NULL,
 				uri VARCHAR
 			)');
-			/*$this->pdo->query('CREATE TABLE IF NOT EXISTS traduction (
-				id INTEGER PRIMARY KEY AUTOINCREMENT,
-				fr VARCHAR NOT NULL,
-				en VARCHAR NOT NULL
-				)');*/
 			$this->initDatabase();
 		} catch(PDOException $e) {
 			echo "Connection failed: " . $e->getMessage();
 			die();
 		}
 	}
-
-	/*public function insertTraduction($traduction) {
-		if ($this->pdo == null) {
-			$this->connect();
-		}
-		$sql = 'INSERT INTO traduction(id, fr, en) '
-					. 'VALUES(:id, :fr, :en)';
-		$stmt = $this->pdo->prepare($sql);
-		$stmt->execute([
-			':id' => $traduction->getId(),
-			':fr' => $traduction->getFr(),
-			':en' => $traduction->getEn(),
-		]);
-		$traduction->setId($this->pdo->lastInsertId());
-	}*/
 
 	public function insertAlbum($album) {
 		if ($this->pdo == null) {

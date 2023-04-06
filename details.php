@@ -25,6 +25,7 @@
             <section id="section_presentation">
                 <img id="img_album" src=<?php echo $album->getUri(); ?> alt="Pochette de l'album">
                 <h1 id="title_album"><?php echo $album->getTitle(); ?></h1><br/>
+                <p><?php echo $album->getRank(); ?>/5</p>
             </section>
             <p id="description_album"><?php echo $album->getDescription(); ?></p>
         </article>

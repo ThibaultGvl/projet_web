@@ -16,6 +16,14 @@
             $db = new Database();
             $albums = $db->getAlbums();
             $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+            if(isset($_GET['query'])) {
+                $query = $_GET['query'];
+                $albums = $db->getAlbumsByName($query);
+                echo $albums;
+            } 
+            if (is_null($albums) || empty($albums)) {
+                $albums = $db->getAlbums();
+            }
         ?>
         <h1 id="welcome">
             <?php
@@ -27,6 +35,18 @@
                 } 
             ?>
         </h1>
+        <div class="search">
+        <form id="search_form" action="index.php" method="GET">
+            <?php $search = new Traduction("Rechercher", "Search");
+                $search_trad = $search->getEn();
+                if ($userLang == 'fr') {
+                    $search_trad = $search->getFr();
+                } 
+            ?>
+            <input id="search_input" type="text" name="query" placeholder=<?php echo $search_trad, "...";?>>
+            <button type="submit"><?php echo $search_trad;?></button>
+        </form>
+        </div>
         <div class="page">
             <main>
                 <?php for ($sec = 1; $sec < 4; $sec++): ?>

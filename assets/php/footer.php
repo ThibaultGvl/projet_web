@@ -1,5 +1,6 @@
 <footer>
-    <form action="mailto:thibault.grivel@etu.unistra.fr" method="POST" enctype="text/plain">
+	<?php include'assets/php/envoi_form.php'; ?>
+    <form id="email_form" action="assets/php/envoi_form.php" method="POST" enctype="text/plain">
 	    <div class="form_div">
 		    <label for="name">Entrez votre nom : </label>
 		    <input type="text" name="name">

@@ -1,3 +1,15 @@
+document.getElementById('search_form')
+  ?.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    let searchInput = document.getElementById('search_input')
+
+    if (searchInput.value) {
+      this.submit()
+    }
+  })
+
+
 const emailCheck = email => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-z]{2,}$/.test(
   email)
 const emailErrorContainer = document.getElementById(
@@ -39,7 +51,7 @@ const commentListenerCallback = () => {
   }
 }
 
-document.querySelector('form')
+document.getElementById('email_form')
   ?.addEventListener('submit', function (event) {
     event.preventDefault()
 

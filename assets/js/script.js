@@ -65,3 +65,20 @@ document.getElementById('email_form')
       this.submit()
     }
   })
+
+
+const affichBtn = document.getElementById('affich_btn');
+affichBtn.addEventListener('click', () => {
+    const page = parseInt(affichBtn.getAttribute('data-page')); // récupérer le numéro de page actuel
+    const url = `./assets/php/loadAlbum.php?page=${page}`; // construire l'URL pour la requête AJAX
+    fetch(url)
+        .then(response => response.json())
+        .then(albums => {
+            console.log(albums); // afficher le contenu de la variable "albums" dans la console du navigateur
+            affichBtn.setAttribute('data-page', page + 1);
+        })
+        .catch(error => {
+            //console.error(error);
+            console.log(error.message);
+        });
+});

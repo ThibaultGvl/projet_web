@@ -1,6 +1,8 @@
 <header>
 	<nav>
-		<img class="icon" src="assets/img/music-band.png" alt="Icone groupe de musique"/>
+		<a href="./index.php">
+			<img class="icon" src="assets/img/music-band.png" alt="Icone groupe de musique"/>
+		</a>
 		<ul class="nav_list">
 			<li>
 				<a class="nav_elem" href="./index.php">

@@ -1,5 +1,5 @@
 <footer>
-	<?php include'assets/php/envoi_form.php'; ?>
+    <h3>Vous Aimez le site, laissez un commentaire !</h3>
     <form id="email_form" action="assets/php/envoi_form.php" method="POST" enctype="text/plain">
 	    <div class="form_div">
 		    <label for="name">Entrez votre nom : </label>

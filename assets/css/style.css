@@ -4,7 +4,7 @@ body {
 }
 
 .icon {
-    width: 5%;
+    width: 15%;
     filter: invert(1);
 }
 
@@ -118,7 +118,7 @@ label {
 }
 
 footer {
-    display: flex;
+    
     padding: 5px;
     background-color: #FFF;
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
@@ -167,7 +167,7 @@ section p {
     border: none;
     border-radius: 5px;
     background-color: #ffcd00;
-    color: white;
+    color: black;
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0px 2px 10px rgba(0,0,0,0.3);

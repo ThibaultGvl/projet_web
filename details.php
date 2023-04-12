@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html>
+    <?php 
+        include 'assets/php/Traduction.php';
+        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+    ?>
     <head>
         <meta charset="utf-8"/>
-        <title>Site de critique musicale</title>
+        <title>
+            <?php
+                $title = new Traduction("Site de critique musicale", "Review website");
+                if ($userLang == 'fr') {
+                    echo $title->getFr();
+                } else {
+                    echo $title->getEn();
+                } 
+            ?>
+        </title>
         <link rel="icon" href="assets/img/music-band.png">
         <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/style.css">
@@ -11,10 +24,8 @@
     <body>
         
         <?php 
-            include 'assets/php/Traduction.php';
             include 'assets/php/header.php';
             require_once 'assets/php/Database.php';
-            $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
             $db = new Database();
             $id = $_GET['id'];
             $id_int = intval($id);

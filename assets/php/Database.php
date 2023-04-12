@@ -1,17 +1,18 @@
 <?php
 
 require_once 'Album.php';
-require_once 'Comment.php';
 
 class Database {
 
 	private $pdo;
 
 	function __construct() {
-		$this->pdo = null;
+		if ($this->pdo == null) {
+			$this->connect();
+		}
 	}
 
-	private function connect() {
+	function connect() {
 		try {
 			$this->pdo = new PDO('sqlite:./assets/php/db/database.db');
 			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -23,7 +24,13 @@ class Database {
 				ranking INTEGER NOT NULL,
 				uri VARCHAR
 			)');
-			$this->initDatabase();
+			$this->pdo->query('CREATE TABLE IF NOT EXISTS comments (
+				id INTEGER PRIMARY KEY AUTOINCREMENT,
+				email VARCHAR,
+				user VARCHAR(255) NOT NULL,
+				comment VARCHAR NOT NULL
+			)');
+			//$this->initDatabase();
 		} catch(PDOException $e) {
 			echo "Connection failed: " . $e->getMessage();
 			die();
@@ -31,9 +38,6 @@ class Database {
 	}
 
 	public function insertAlbum($album) {
-		if ($this->pdo == null) {
-			$this->connect();
-		}
 		$sql = 'INSERT INTO albums(id, title, descript, artist, ranking, uri) '
 		. 'VALUES(:id, :title, :descript, :artist, :ranking, :uri)';
 		$stmt = $this->pdo->prepare($sql);
@@ -48,10 +52,24 @@ class Database {
 		$album->setId($this->pdo->lastInsertId());
 	}
 
-	public function getAlbums() {
-		if ($this->pdo == null) {
-			$this->connect();
+	public function insertComment($comment) {
+		try {
+			$sql = 'INSERT INTO comments(email, user, comment) '
+			. 'VALUES(:email, :user, :comment)';
+			$stmt = $this->pdo->prepare($sql);
+			$stmt->execute([
+				':email' => $comment->getEmail(),
+				':user' => $comment->getUser(),
+				':comment' => $comment->getComment(),
+			]);
+			$comment->setId($this->pdo->lastInsertId());
+		} catch(PDOException $e) {
+			echo "Error inserting comment: " . $e->getMessage();
 		}
+	}
+	
+
+	public function getAlbums() {
 		$stmt = $this->pdo->query('SELECT * FROM albums');
 		$albums = [];
 		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -60,6 +78,17 @@ class Database {
 			$albums[] = $album;
 		}
 		return $albums;
+	}
+
+	public function getComments() {
+		$stmt = $this->pdo->query('SELECT * FROM comments');
+		$comments = [];
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$comment = new Comment($row['email'], $row['user'], $row['comment']);
+			$comment->setId($row['id']);
+			$comments[] = $comment;
+		}
+		return $comments;
 	}
 
 	public function getAlbumById($id) {
@@ -79,7 +108,7 @@ class Database {
 
 	public function getAlbumsByName($name) {
 		$albums = $this->getAlbums();
-		$albumsToReturn[] = null;
+		$albumsToReturn[] = [];
 		foreach ($albums as $album) {
 			if (strpos(strtolower($album->getTitle()), strtolower($name)) !== false || strpos(strtolower($album->getArtist()), strtolower($name)) !== false) {
 				$albumsToReturn[] = $album;
@@ -87,6 +116,17 @@ class Database {
 		}
 		return $albumsToReturn;
 	}
+
+	public function getAlbumsPaginated($page, $perPage) {
+		$albums = $this->getAlbums();
+		$albumsToReturn[] = null;
+		for($i = $perPage; $i<($page+1)*$perPage; $i++) {
+			if (isset($albums[$i])) {
+				$albumsToReturn[] = $albums[$i];
+			}
+		}
+		return $albumsToReturn;
+	} 		
 
 	private function initDatabase() {
         $stmt = $this->pdo->query('SELECT COUNT(*) FROM albums');
@@ -112,6 +152,27 @@ class Database {
             $this->insertAlbum($album8);
             $this->insertAlbum($album9);
             $this->insertAlbum($album10);
-        }
+			$album11 = new Album('Savage Sinusoid', 'Igorrr', 'Génialement inclassable', 4, 'https://static.fnac-static.com/multimedia/Images/FR/NR/18/9d/86/8822040/1507-1/tsp20220315181904/Savage-Sinusoid.jpg');
+            $album12 = new Album('Alba les ombres errantes', 'Hypno5e', 'Incroyable', 5, 'https://i.scdn.co/image/ab67616d0000b273673db762f2672847ea5c0c6f');
+            $album13 = new Album('Erotic Cake', 'Guthrie Govan', 'Sans doute le meilleur album de guitare de ces dernieres années', 5, 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51lfSTeKkfL.jpg');
+            $album14 = new Album('Les 5 saisons', 'Harmonium', 'Top', 5, 'https://i.scdn.co/image/ab67616d0000b27302c1e441b4e84a11ad5b2f3a');
+            $album15 = new Album('Apostrophe \'', 'Frank Zappa', 'Zappa au sommet de son art', 5, 'https://static.fnac-static.com/multimedia/FR/Images_Produits/FR/fnac.com/Visual_Principal_340/8/2/1/0824302385128.jpg');
+            $album16 = new Album('Breakfast in america', 'Supertramp', 'La pop au top', 5, 'https://www.renaissens.com/9178-large_default/Supertramp-Breakfast-in-America-Mobile-Fidelity-UDSACD-2189.jpg');
+			$album17 = new Album('Savage Sinusoid', 'Igorrr', 'Génialement inclassable', 4, 'https://static.fnac-static.com/multimedia/Images/FR/NR/18/9d/86/8822040/1507-1/tsp20220315181904/Savage-Sinusoid.jpg');
+            $album18 = new Album('Alba les ombres errantes', 'Hypno5e', 'Incroyable', 5, 'https://i.scdn.co/image/ab67616d0000b273673db762f2672847ea5c0c6f');
+            $album19 = new Album('Erotic Cake', 'Guthrie Govan', 'Sans doute le meilleur album de guitare de ces dernieres années', 5, 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51lfSTeKkfL.jpg');
+            $album20 = new Album('Les 5 saisons', 'Harmonium', 'Top', 5, 'https://i.scdn.co/image/ab67616d0000b27302c1e441b4e84a11ad5b2f3a');
+			$this->insertAlbum($album11);
+            $this->insertAlbum($album12);
+            $this->insertAlbum($album13);
+            $this->insertAlbum($album14);
+            $this->insertAlbum($album15);
+            $this->insertAlbum($album16);
+            $this->insertAlbum($album17);
+            $this->insertAlbum($album18);
+            $this->insertAlbum($album19);
+            $this->insertAlbum($album20);
+            
+		}
     }
 }

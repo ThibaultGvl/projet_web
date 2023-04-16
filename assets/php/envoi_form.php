@@ -2,34 +2,34 @@
 require_once 'Comment.php';
 require_once 'Database.php';
 
-
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? null;
-    $user = $_POST['name'] ?? null;
-    $comment = $_POST['commentaire'] ?? null;
-
-    // Validate inputs
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $comment = $_POST['commentaire'];
     $errors = [];
-    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL) || !is_string($email)) {
         $errors['email'] = 'Veuillez saisir un email valide';
     }
-    if (!$user) {
+    if (!$name || !is_string($name) || strlen($name) > 255) {
         $errors['user'] = 'Veuillez saisir votre nom';
     }
-    if (!$comment) {
+    if (!$comment || !is_string($comment)) {
         $errors['comment'] = 'Veuillez saisir un commentaire';
     }
 
     if (empty($errors)) {
-        // Create Comment object and insert into database
-        $commentObj = new Comment($email, $user, $comment);
-        $db = new Database();
+        $commentObj = new Comment($email, $name, $comment);
+        $db = new Database('db/');
         $db->insertComment($commentObj);
+        $_SESSION['success_message'] = "Votre commentaire a été créé avec succès.";
+    }
+    else {
+        $_SESSION['success_message'] = "Votre commentaire n'a pas pu être créé.";
     }
 }
-session_start();
-$_SESSION['success_message'] = "Votre commentaire a été créé avec succès.";
+
 header('Location: ../../index.php');
 exit();
+
 ?>

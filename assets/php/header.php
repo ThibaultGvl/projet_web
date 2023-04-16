@@ -29,7 +29,16 @@
 					?>
 				</a>
 			</li>
-        	<li> <a class="nav_elem" href="./index.php">Contact</a></li>
+        	<li> <a class="nav_elem" href="./comments.php">
+			<?php
+					$comments = new Traduction("Avis", "Comments");
+					if ($userLang == 'fr') {
+						echo $comments->getFr();
+					} else {
+						echo $comments->getEn();
+					} 
+					?>
+			</a></li>
 		</ul>
 	</nav>
 </header>

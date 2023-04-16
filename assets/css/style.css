@@ -1,14 +1,14 @@
 body {
-    font-size: 1em;
     font-family: 'Libre Baskerville', serif;
+    word-wrap: break-word;
 }
 
-.icon {
+nav a img {
     width: 15%;
     filter: invert(1);
 }
 
-#welcome {
+h1 {
     text-align: center;
     padding-top: 100px;
     padding-bottom: 100px;
@@ -27,19 +27,19 @@ nav {
     background-color: #000;
 }
 
-.nav_list{
+nav ul{
     display: flex;
     list-style: none;
 }
 
-.nav_elem {
+nav li a {
     color: white;
     size: 1rem;
     padding: 5px 14px;
     text-decoration: none;
 }
 
-.nav_elem:hover {
+nav li a:hover {
     color: #ffcd00;
 }
 
@@ -48,45 +48,61 @@ main {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-}
-
-.bloc {
-    flex: content;
-    display : flex
-}
-
-.elem {
+  }
+  
+  main section {
+    display: grid;
+    grid-gap: 30px;
+  }
+  @media (min-width: 768px) {
+    main section {
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+    }
+  }
+  
+  @media (max-width: 480px) {
+    main section {
+      grid-template-columns: repeat(1, minmax(200px, 1fr));
+    }
+  }
+  section a {
     background-color: #FFF;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    margin : 15px;
-    width: 33%;
     transition: all 0.2s ease-in-out;
     text-decoration: none;
     color: #000;
-}
-
-.elem:hover {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "image"
+      "title";
+    margin-bottom: 30px;
+  }
+  
+  section a:hover {
     box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.5);
-}
-
-.img_elem {
+  }
+  
+  section a img {
     width: 100%;
-}
-
-.tit_elem {
+    max-width: 100%;
+    grid-area: image;
+  }
+  
+  section a h2 {
     text-align: center;
-}
-
-.desc_elem {
-    text-align: center;
-    font-size: 16px;
-}
+    margin: 0;
+    grid-area: title;
+    padding: 10px;
+  }
+  
 
 #affich_btn {
     grid-row: 2;
     font-size: 2rem;
     background-color: #FFF;
+    border: none;
     border-radius: 10px;
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
     width: 33%;
@@ -94,6 +110,7 @@ main {
     display: block;
     margin-top: 50px;
     margin-bottom: 50px;
+    padding: 10px 10px;
 }
 
 #affich_btn:hover {
@@ -101,21 +118,67 @@ main {
     color: #ffcd00;
   }
 
-form {
-    display: table;
-}
-div.form_div {
-    display: table-row;
-}
-label,
-input, .text_error {
-    display: table-cell;
-    margin-bottom: 10px;
-}
+  @media (max-width: 768px) {
+    #affich_btn {
+        font-size: 1.6rem;
+    }
+  }
 
-label {
-    padding-right: 10px;
+  @media (max-width: 480px) {
+    #affich_btn {
+        font-size: 1.4rem;
+    }
+  }
+
+footer form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    width: 75%;
+  }
+  
+  
+footer form label {
+    font-weight: bold;
+    margin-bottom: 5px;
 }
+  
+footer form input[type="text"],
+footer form input[type="email"],
+footer form textarea {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 1.2rem;
+}
+  
+footer form input[type="submit"] {
+    background-color: #ffff;
+    color: black;
+    border: none;
+    padding: 10px 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 25%;
+    border-radius: 10px;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (max-width: 480px) {
+    footer form input[type="submit"] {
+        font-size: 1.1rem;
+    }
+  }
+  
+footer form input[type="submit"]:hover {
+    background-color: black;
+    color: #ffcd00;
+  }
+  
 
 footer {
     
@@ -124,28 +187,28 @@ footer {
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
 }
 
-#section_presentation {
+section article {
     display : flex;
 }
 
-#img_album {
+section article img {
     width: 15%;
     margin-top: 10px;
 }
 
-#title_album {
+section article h2 {
     width: 75%;
     text-align: center;
 }
 
 #description_album {
     margin-left: 15%;
-    width: 75%;
+    width: 85%;
     text-align: center;
 }
 
-section p {
-	font-size: 25px;
+section article p {
+	font-size: 1.5rem;
 }
 
 .search {
@@ -159,7 +222,7 @@ section p {
     border: none;
     border-radius: 5px;
     box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
-    font-size: 16px;
+    font-size: 1.2rem;
     margin-right: 10px;
 }
 .search button {
@@ -168,10 +231,27 @@ section p {
     border-radius: 5px;
     background-color: #ffcd00;
     color: black;
-    font-size: 16px;
+    font-size: 1.2rem;
     cursor: pointer;
     box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
 }
 .search button:hover {
     background-color: #ffcd00;
+}
+/*CSS Page comments*/ 
+article {
+  margin: 20px;
+  padding: 20px;
+  background-color: #F5F5DC;
+  border-radius: 10px;
+}
+
+article h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+article p {
+  font-size: 1.2rem;
+  line-height: 1.5;
 }

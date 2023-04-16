@@ -1,7 +1,7 @@
 <?php
 require_once 'Database.php';
 
-$db = new Database();
+$db = new Database('db/');
 
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $perPage = 9;

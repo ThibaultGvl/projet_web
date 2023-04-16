@@ -25,8 +25,7 @@
         session_start();
         include 'assets/php/header.php';
         require_once 'assets/php/Database.php';
-        $db = new Database();
-        $comments = $db->getComments();
+        $db = new Database("assets/php/db/");
         $albums = $db->getAlbums();
         if(isset($_GET['query'])) {
             $query = $_GET['query'];
@@ -37,13 +36,6 @@
         }
     ?>
     <body>
-        <?php 
-            if (isset($_SESSION['success_message'])) {
-                echo '<p>' . $_SESSION['success_message'] . '</p>';
-            // Supprimer le message de confirmation de la variable de session
-                unset($_SESSION['success_message']);
-            }
-        ?>
         <h1 id="welcome">
             <?php
                 $welcomeText = new Traduction("Bienvenue sur mon site de critique musicale !", "Welcome to my music review website!");
@@ -51,9 +43,6 @@
                     echo $welcomeText->getFr();
                 } else {
                     echo $welcomeText->getEn();
-                } 
-                if(isset($comments[0]) && $comments[0] != "") {
-                    echo $comments[0]->getComment();
                 }
             ?>
         </h1>
@@ -63,10 +52,11 @@
                 $search_trad = $search->getEn();
                 if ($userLang == 'fr') {
                     $search_trad = $search->getFr();
-                } 
+                }
             ?>
             <input id="search_input" type="text" name="query" placeholder=<?php echo $search_trad, "...";?>>
             <button type="submit"><?php echo $search_trad;?></button>
+            <p id="search_error"></p>
         </form>
         </div>
         <div class="page">

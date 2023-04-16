@@ -1,40 +1,37 @@
 <?php
 
 require_once 'Album.php';
+require_once 'Comment.php';
 
 class Database {
 
 	private $pdo;
 
-	function __construct() {
-		if ($this->pdo == null) {
-			$this->connect();
-		}
+	function __construct($path) {
+		$this->pdo = $this->connect($path);
 	}
 
-	function connect() {
-		try {
-			$this->pdo = new PDO('sqlite:./assets/php/db/database.db');
-			$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$this->pdo->query('CREATE TABLE IF NOT EXISTS albums (
-				id INTEGER PRIMARY KEY AUTOINCREMENT,
-				title VARCHAR(255) NOT NULL,
-				descript VARCHAR NOT NULL,
-				artist VARCHAR NOT NULL,
-				ranking INTEGER NOT NULL,
-				uri VARCHAR
-			)');
-			$this->pdo->query('CREATE TABLE IF NOT EXISTS comments (
-				id INTEGER PRIMARY KEY AUTOINCREMENT,
-				email VARCHAR,
-				user VARCHAR(255) NOT NULL,
-				comment VARCHAR NOT NULL
-			)');
-			//$this->initDatabase();
-		} catch(PDOException $e) {
-			echo "Connection failed: " . $e->getMessage();
-			die();
-		}
+	function connect($path) {
+		if($this->pdo==null) {
+				$this->pdo = new PDO('sqlite:'. $path .'database.db');
+				$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				$this->pdo->query('CREATE TABLE IF NOT EXISTS albums (
+					id INTEGER PRIMARY KEY AUTOINCREMENT,
+					title VARCHAR(255) NOT NULL,
+					descript VARCHAR NOT NULL,
+					artist VARCHAR NOT NULL,
+					ranking INTEGER NOT NULL,
+					uri VARCHAR
+				)');
+				$this->pdo->query('CREATE TABLE IF NOT EXISTS comments (
+					id INTEGER PRIMARY KEY AUTOINCREMENT,
+					email VARCHAR,
+					user VARCHAR(255) NOT NULL,
+					comment VARCHAR NOT NULL
+				)');
+				$this->initDatabase();
+			}
+			return $this->pdo;
 	}
 
 	public function insertAlbum($album) {
@@ -138,7 +135,7 @@ class Database {
             $album4 = new Album('Wish you were here', 'Pink Floyd', 'Un classique des 70\'s', 5, 'https://monshoppingcestcalais.fr/media/catalog/product/cache/1/image/480x480/85e4522595efc69f496374d01ef2bf13/2/c/2c06896918_.jpg');
             $album5 = new Album('Savage Sinusoid', 'Igorrr', 'Génialement inclassable', 4, 'https://static.fnac-static.com/multimedia/Images/FR/NR/18/9d/86/8822040/1507-1/tsp20220315181904/Savage-Sinusoid.jpg');
             $album6 = new Album('Alba les ombres errantes', 'Hypno5e', 'Incroyable', 5, 'https://i.scdn.co/image/ab67616d0000b273673db762f2672847ea5c0c6f');
-            $album7 = new Album('Erotic Cake', 'Guthrie Govan', 'Sans doute le meilleur album de guitare de ces dernieres années', 5, 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51lfSTeKkfL.jpg');
+            $album7 = new Album('Erotic Cakes', 'Guthrie Govan', 'Sans doute le meilleur album de guitare de ces dernieres années', 5, 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51lfSTeKkfL.jpg');
             $album8 = new Album('Les 5 saisons', 'Harmonium', 'Top', 5, 'https://i.scdn.co/image/ab67616d0000b27302c1e441b4e84a11ad5b2f3a');
             $album9 = new Album('Apostrophe \'', 'Frank Zappa', 'Zappa au sommet de son art', 5, 'https://static.fnac-static.com/multimedia/FR/Images_Produits/FR/fnac.com/Visual_Principal_340/8/2/1/0824302385128.jpg');
             $album10 = new Album('Breakfast in america', 'Supertramp', 'La pop au top', 5, 'https://www.renaissens.com/9178-large_default/Supertramp-Breakfast-in-America-Mobile-Fidelity-UDSACD-2189.jpg');
@@ -160,7 +157,7 @@ class Database {
             $album16 = new Album('Breakfast in america', 'Supertramp', 'La pop au top', 5, 'https://www.renaissens.com/9178-large_default/Supertramp-Breakfast-in-America-Mobile-Fidelity-UDSACD-2189.jpg');
 			$album17 = new Album('Savage Sinusoid', 'Igorrr', 'Génialement inclassable', 4, 'https://static.fnac-static.com/multimedia/Images/FR/NR/18/9d/86/8822040/1507-1/tsp20220315181904/Savage-Sinusoid.jpg');
             $album18 = new Album('Alba les ombres errantes', 'Hypno5e', 'Incroyable', 5, 'https://i.scdn.co/image/ab67616d0000b273673db762f2672847ea5c0c6f');
-            $album19 = new Album('Erotic Cake', 'Guthrie Govan', 'Sans doute le meilleur album de guitare de ces dernieres années', 5, 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51lfSTeKkfL.jpg');
+            $album19 = new Album('Erotic Cakes', 'Guthrie Govan', 'Sans doute le meilleur album de guitare de ces dernieres années', 5, 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51lfSTeKkfL.jpg');
             $album20 = new Album('Les 5 saisons', 'Harmonium', 'Top', 5, 'https://i.scdn.co/image/ab67616d0000b27302c1e441b4e84a11ad5b2f3a');
 			$this->insertAlbum($album11);
             $this->insertAlbum($album12);

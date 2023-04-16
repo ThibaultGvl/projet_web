@@ -3,7 +3,8 @@
     <?php 
         include 'assets/php/Traduction.php';
         include 'assets/php/Comment.php';
-        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $userLang = 'fr';
     ?>
     <head>
         <meta charset="utf-8"/>

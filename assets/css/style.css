@@ -6,6 +6,8 @@ body {
 nav a img {
     width: 15%;
     filter: invert(1);
+    min-height: 50px;
+    min-width: 50px;
 }
 
 h1 {

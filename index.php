@@ -2,7 +2,8 @@
 <html>
     <?php 
         include 'assets/php/Traduction.php';
-        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $userLang = 'fr';
     ?>
     <head>
         <meta charset="utf-8"/>
@@ -38,7 +39,7 @@
     <body>
         <h1 id="welcome">
             <?php
-                $welcomeText = new Traduction("Bienvenue sur mon site de critique musicale !", "Welcome to my music review website!");
+                $welcomeText = new Traduction("Bienvenue sur mon site de critique musicale!", "Welcome to my music review website!");
                 if ($userLang == 'fr') {
                     echo $welcomeText->getFr();
                 } else {

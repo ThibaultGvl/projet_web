@@ -105,7 +105,7 @@ class Database {
 
 	public function getAlbumsByName($name) {
 		$albums = $this->getAlbums();
-		$albumsToReturn[] = [];
+		$albumsToReturn = [];
 		foreach ($albums as $album) {
 			if (strpos(strtolower($album->getTitle()), strtolower($name)) !== false || strpos(strtolower($album->getArtist()), strtolower($name)) !== false) {
 				$albumsToReturn[] = $album;
@@ -114,12 +114,13 @@ class Database {
 		return $albumsToReturn;
 	}
 
-	public function getAlbumsPaginated($page, $perPage) {
+	public function getAlbumsPaginated($perPage, $page) {
 		$albums = $this->getAlbums();
 		$albumsToReturn[] = null;
-		for($i = $perPage; $i<($page+1)*$perPage; $i++) {
-			if (isset($albums[$i])) {
-				$albumsToReturn[] = $albums[$i];
+		for($i = 0; $i<$perPage; $i++) {
+			$index = 9 + ($perPage)*($page-1) + $i;
+			if (isset($albums[$index])) {
+				$albumsToReturn[] = $albums[$index];
 			}
 		}
 		return $albumsToReturn;

@@ -36,10 +36,13 @@ nav ul{
 
 nav li a {
     color: white;
-    size: 1rem;
     padding: 5px 14px;
     text-decoration: none;
+    word-wrap:normal;
+    display: inline-block;
+    text-align: center;
 }
+
 
 nav li a:hover {
     color: #ffcd00;
@@ -240,6 +243,7 @@ section article p {
 .search button:hover {
     background-color: #ffcd00;
 }
+
 /*CSS Page comments*/ 
 article {
   margin: 20px;

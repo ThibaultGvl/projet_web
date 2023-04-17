@@ -9,7 +9,7 @@
         <title>
             <?php
                 $title = new Traduction("Site de critique musicale", "Review website");
-                if ($userLang == 'fr') {
+                if (strpos($userLang, 'fr') !== false) {
                     echo $title->getFr();
                 } else {
                     echo $title->getEn();
@@ -27,9 +27,13 @@
         require_once 'assets/php/Database.php';
         $db = new Database("assets/php/db/");
         $albums = $db->getAlbums();
+        $albumInex = false;
         if(isset($_GET['query'])) {
             $query = $_GET['query'];
             $albums = $db->getAlbumsByName($query);
+            if (empty($albums)) {
+                $albumInex = true;
+            }
         } 
         if (is_null($albums) || empty($albums)) {
             $albums = $db->getAlbums();
@@ -39,7 +43,7 @@
         <h1 id="welcome">
             <?php
                 $welcomeText = new Traduction("Bienvenue sur mon site de critique musicale!", "Welcome to my music review website!");
-                if ($userLang == 'fr') {
+                if (strpos($userLang, 'fr') !== false) {
                     echo $welcomeText->getFr();
                 } else {
                     echo $welcomeText->getEn();
@@ -50,13 +54,27 @@
         <form id="search_form" action="index.php" method="GET">
             <?php $search = new Traduction("Rechercher", "Search");
                 $search_trad = $search->getEn();
-                if ($userLang == 'fr') {
+                if (strpos($userLang, 'fr') !== false) {
                     $search_trad = $search->getFr();
                 }
             ?>
             <input id="search_input" type="text" name="query" placeholder=<?php echo $search_trad, "...";?>>
             <button type="submit"><?php echo $search_trad;?></button>
-            <p id="search_error"></p>
+            <p id="search_error">
+                <?php 
+                    if ($albumInex) {
+                        if (strpos($userLang, 'fr') !== false) {
+                            echo "Cet album n'a pas encore été noté";
+                        }
+                        else {
+                            echo "This album has not been rated yet";
+                        }
+                    }
+                    else {
+                        echo "";
+                    }
+                ?>
+            </p>
         </form>
         </div>
         <div class="page">
@@ -78,7 +96,7 @@
                     <button id="affich_btn" data-page="1">
                         <?php
                             $affich_btn_text = new Traduction("Afficher plus d'albums", "See more albums");
-                            if ($userLang == 'fr') {
+                            if (strpos($userLang, 'fr') !== false) {
                                 echo $affich_btn_text->getFr();
                             } else {
                                 echo $affich_btn_text->getEn();

@@ -9,7 +9,7 @@
         <title>
             <?php
                 $title = new Traduction("Site de critique musicale", "Review website");
-                if ($userLang == 'fr') {
+                if (strpos($userLang, 'fr') !== false) {
                     echo $title->getFr();
                 } else {
                     echo $title->getEn();

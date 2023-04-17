@@ -10,7 +10,7 @@
         <title>
             <?php
                 $title = new Traduction("Site de critique musicale", "Review website");
-                if ($userLang == 'fr') {
+                if (strpos($userLang, 'fr') !== false) {
                     echo $title->getFr();
                 } else {
                     echo $title->getEn();
@@ -29,15 +29,30 @@
             require_once 'assets/php/Database.php';
             $db = new Database('assets/php/db/');
             $comments = $db->getComments();
-            foreach ($comments as $comment) {
-                echo '<article class="comment">'.
-                        '<h2 class="comment-author">'. 
-                            $comment->getUser() .
-                        '</h2>' .
-                        '<p class="comment-content">' .
-                            $comment->getComment() .
-                        '</p>' .
-                    '</article>';
+            if (empty($comments)) {
+                $emptyComment = new Traduction("Soyez la première personne à commenter !", "Be the first to comment !");
+                if (strpos($userLang, 'fr') !== false) {
+                    $msg = $emptyComment->getFr();
+                } else {
+                    $msg = $emptyComment->getEn();
+                }
+                echo    '<article class="comment">'.
+                            '<h2 class="comment-author">'. 
+                                $msg .
+                            '</h2>' .
+                        '</article>';
+            }
+            else {
+                foreach ($comments as $comment) {
+                    echo '<article class="comment">'.
+                            '<h2 class="comment-author">'. 
+                                $comment->getUser() .
+                            '</h2>' .
+                            '<p class="comment-content">' .
+                                $comment->getComment() .
+                            '</p>' .
+                        '</article>';
+                }
             }
         ?>
         

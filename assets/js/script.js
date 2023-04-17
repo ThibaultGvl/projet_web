@@ -1,3 +1,4 @@
+const userLang = navigator.language || navigator.userLanguage;
 const emailCheck = email => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-z]{2,}$/.test(
   email)
 const emailErrorContainer = document.getElementById(
@@ -7,7 +8,12 @@ let emailHasError = false
 const emailInput = document.getElementById('email')
 const emailListenerCallback = () => {
   if (!emailCheck(emailInput.value)) {
-    emailErrorContainer.innerText = 'L\'email n\'a pas le bon format'
+    if (userLang.includes('fr')) {
+      emailErrorContainer.innerText = 'L\'email n\'a pas le bon format'
+    }
+    else {
+      emailErrorContainer.innerText = 'The email does not have the right format'
+    }
     emailErrorContainer.style.color = 'red'
     emailInput.style.backgroundColor = 'rgba(255, 0, 0, 0.1)'
     emailInput.style.borderColor = 'red'
@@ -26,7 +32,12 @@ let commentInput = document.getElementById('commentaire')
 let commentError = document.getElementById('comment_error')
 const commentListenerCallback = () => {
   if (commentInput.value.length < 10) {
-    commentError.innerText = 'Votre commentaire doit contenir plus de 10 charactères'
+    if (userLang.includes('fr')) {
+      commentError.innerText = 'Votre commentaire doit contenir plus de 10 charactères'
+    }
+    else {
+      commentError.innerText = 'Your comment must contain more than 10 characters'
+    }
     commentError.style.color = 'red'
     commentInput.style.backgroundColor = 'rgba(255, 0, 0, 0.1)'
     commentInput.style.borderColor = 'red'
@@ -46,7 +57,12 @@ let nameInput = document.getElementById('name')
 let nameError = document.getElementById('name_error')
 const nameListenerCallback = () => {
   if (!nameInput.value && nameInput.value.length == 0) {
-    nameError.innerText = 'Veuillez entrer un nom'
+    if (userLang.includes('fr')) {
+      nameError.innerText = 'Veuillez entrer un nom'
+    }
+    else {
+      nameError.innerText = 'Please enter a name'
+    }
     nameError.style.color = 'red'
     nameInput.style.backgroundColor = 'rgba(255, 0, 0, 0.1)'
     nameInput.style.borderColor = 'red'
@@ -100,6 +116,7 @@ document.getElementById('email_form')
     const imgElem = document.createElement('img')
     imgElem.classList.add('img_elem')
     imgElem.src = album.uri
+    
     imgElem.alt = 'Pochette de l\'album'
     albumElem.appendChild(imgElem)
   
@@ -117,6 +134,11 @@ document.getElementById('email_form')
     const page = parseInt(affichBtn.getAttribute('data-page'))
     const data = { page: page }
     const url = `assets/php/loadAlbum.php`
+    const urlParams = new URLSearchParams(window.location.search)
+    const queryParam = urlParams.get('query')
+    if (queryParam != null) {
+      return
+    }
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -145,6 +167,4 @@ document.getElementById('email_form')
       console.error(error.message)
     }
   });
-  
-
   

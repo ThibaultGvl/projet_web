@@ -116,7 +116,7 @@ class Database {
 
 	public function getAlbumsPaginated($perPage, $page) {
 		$albums = $this->getAlbums();
-		$albumsToReturn[] = null;
+		$albumsToReturn = [];
 		for($i = 0; $i<$perPage; $i++) {
 			$index = 9 + ($perPage)*($page-1) + $i;
 			if (isset($albums[$index])) {

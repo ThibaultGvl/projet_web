@@ -93,30 +93,30 @@ document.getElementById('email_form')
   })
 
   function createAlbumElement(album) {
-    const albumElem = document.createElement('a');
-    albumElem.classList.add('elem');
-    albumElem.href = 'details.php?id=' + album.id;
+    const albumElem = document.createElement('a')
+    albumElem.classList.add('elem')
+    albumElem.href = 'details.php?id=' + album.id
   
-    const imgElem = document.createElement('img');
-    imgElem.classList.add('img_elem');
-    imgElem.src = album.uri;
-    imgElem.alt = 'Pochette de l\'album';
-    albumElem.appendChild(imgElem);
+    const imgElem = document.createElement('img')
+    imgElem.classList.add('img_elem')
+    imgElem.src = album.uri
+    imgElem.alt = 'Pochette de l\'album'
+    albumElem.appendChild(imgElem)
   
-    const titElem = document.createElement('h2');
-    titElem.classList.add('tit_elem');
-    titElem.textContent = album.title;
-    albumElem.appendChild(titElem);
+    const titElem = document.createElement('h2')
+    titElem.classList.add('tit_elem')
+    titElem.textContent = album.title
+    albumElem.appendChild(titElem)
   
-    return albumElem;
+    return albumElem
   }
   
-  const affichBtn = document.getElementById('affich_btn');
+  const affichBtn = document.getElementById('affich_btn')
   affichBtn.addEventListener('click', async (event) => {
-    event.preventDefault();
-    const page = parseInt(affichBtn.getAttribute('data-page')); // récupérer le numéro de page actuel
-    const data = { page: page }; // construire l'objet contenant les données à envoyer
-    const url = `assets/php/loadAlbum.php?page=${page}`;
+    event.preventDefault()
+    const page = parseInt(affichBtn.getAttribute('data-page'))
+    const data = { page: page }
+    const url = `assets/php/loadAlbum.php`
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -124,26 +124,25 @@ document.getElementById('email_form')
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-      });
+      })
       if (response.ok) {
-        const albums = await response.json(); // récupérer les albums renvoyés par la requête
-        console.log(albums);
-        const mainElem = document.querySelector('main');
+        const albums = await response.json()
+        console.log(albums)
+        const mainElem = document.querySelector('main')
         const section = document.createElement('section')
         for (const albumJson of albums) {
-          const album = JSON.parse(albumJson);
-            console.log(album.id);
-            const albumElem = createAlbumElement(album);
-            section.appendChild(albumElem);
+          const album = JSON.parse(albumJson)
+            console.log(album.id)
+            const albumElem = createAlbumElement(album)
+            section.appendChild(albumElem)
         }
         mainElem.insertBefore(section, affichBtn)
-        affichBtn.setAttribute('data-page', page + 1);
-        console.log(affichBtn.getAttribute('data-page'))
+        affichBtn.setAttribute('data-page', page + 1)
       } else {
-        console.error(response.statusText);
+        console.error(response.statusText)
       }
     } catch (error) {
-      console.error(error.message);
+      console.error(error.message)
     }
   });
   

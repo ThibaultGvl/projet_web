@@ -2,8 +2,7 @@
 <html>
     <?php 
         include 'assets/php/Traduction.php';
-        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-        $userLang = 'fr';
+        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
     ?>
     <head>
         <meta charset="utf-8"/>
@@ -76,16 +75,16 @@
                         <?php endfor; ?>
                     </section>
                 <?php endfor; ?>
-                <button id="affich_btn" data-page="1">
-                    <?php
-                        $affich_btn_text = new Traduction("Afficher plus d'albums", "See more albums");
-                        if ($userLang == 'fr') {
-                            echo $affich_btn_text->getFr();
-                        } else {
-                            echo $affich_btn_text->getEn();
-                        } 
-                    ?>
-                </button>
+                    <button id="affich_btn" data-page="1">
+                        <?php
+                            $affich_btn_text = new Traduction("Afficher plus d'albums", "See more albums");
+                            if ($userLang == 'fr') {
+                                echo $affich_btn_text->getFr();
+                            } else {
+                                echo $affich_btn_text->getEn();
+                            } 
+                        ?>
+                    </button>
             </main>
         </div>
 

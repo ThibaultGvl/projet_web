@@ -2,9 +2,9 @@
 require_once 'Database.php';
 
 $db = new Database('db/');
-static $page = 1;
-//isset($_POST['page']) est toujours false ici
-$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+$request_body = file_get_contents('php://input');
+$data = json_decode($request_body);
+$page = $data->page;
 $perPage = 3;
 
 $albums = $db->getAlbumsPaginated($perPage, $page);

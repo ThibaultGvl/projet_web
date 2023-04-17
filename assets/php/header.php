@@ -7,8 +7,7 @@
 			<li>
 				<a class="nav_elem" href="./index.php">
 					<?php
-						//$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-						$userLang = 'fr';
+						$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
 						$home = new Traduction("Accueil", "Home");
 						if ($userLang == 'fr') {
 							echo $home->getFr();

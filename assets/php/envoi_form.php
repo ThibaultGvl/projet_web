@@ -1,6 +1,6 @@
 <?php
-require_once 'Comment.php';
-require_once 'Database.php';
+require_once 'models/Comment.php';
+require_once 'models/Database.php';
 
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

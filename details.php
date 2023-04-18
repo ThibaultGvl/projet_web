@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <?php 
-        include 'assets/php/Traduction.php';
+        include 'assets/php/models/Traduction.php';
         $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
     ?>
     <head>
@@ -25,7 +25,7 @@
         
         <?php 
             include 'assets/php/header.php';
-            require_once 'assets/php/Database.php';
+            require_once 'assets/php/models/Database.php';
             $db = new Database('assets/php/db/');
             $id_int = -1;
             if (isset($_GET['id'])) {

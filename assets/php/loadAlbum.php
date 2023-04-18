@@ -1,5 +1,5 @@
 <?php
-require_once 'Database.php';
+require_once 'models/Database.php';
 
 $db = new Database('db/');
 $request_body = file_get_contents('php://input');

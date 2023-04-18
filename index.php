@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <?php 
-        include 'assets/php/Traduction.php';
+        include 'assets/php/models/Traduction.php';
         $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
     ?>
     <head>
@@ -24,7 +24,7 @@
     <?php 
         session_start();
         include 'assets/php/header.php';
-        require_once 'assets/php/Database.php';
+        require_once 'assets/php/models/Database.php';
         $db = new Database("assets/php/db/");
         $albums = $db->getAlbums();
         $albumInex = false;

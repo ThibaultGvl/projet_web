@@ -101,6 +101,7 @@ document.getElementById('email_form')
 
     if (document.getElementById('search_input').value.length > 0) {
       this.submit()
+      
     }
     else {
       document.getElementById('search_error').innerText = 'Veuillez saisir un champ'
@@ -134,11 +135,6 @@ document.getElementById('email_form')
     const page = parseInt(affichBtn.getAttribute('data-page'))
     const data = { page: page }
     const url = `assets/php/loadAlbum.php`
-    const urlParams = new URLSearchParams(window.location.search)
-    const queryParam = urlParams.get('query')
-    if (queryParam != null) {
-      return
-    }
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -167,4 +163,11 @@ document.getElementById('email_form')
       console.error(error.message)
     }
   });
-  
+  const urlParams = new URLSearchParams(window.location.search)
+    const queryParam = urlParams.get('query')
+    if (queryParam != null) {
+      affichBtn.style.display = 'none'
+    }
+    else {
+      affichBtn.style.display = ''
+    }

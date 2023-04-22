@@ -16,7 +16,7 @@ h1 {
     padding-bottom: 100px;
 }
 
-.page {
+main {
     display: flex;
     overflow: auto;
     text-align: justify;
@@ -48,29 +48,29 @@ nav li a:hover {
     color: #ffcd00;
 }
 
-main {
+main ul {
     width: 85%;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
   }
   
-  main section {
+  main ul li {
     display: grid;
     grid-gap: 30px;
   }
   @media (min-width: 768px) {
-    main section {
+    main ul li {
       grid-template-columns: repeat(3, minmax(200px, 1fr));
     }
   }
   
   @media (max-width: 480px) {
-    main section {
+    main ul li {
       grid-template-columns: repeat(1, minmax(200px, 1fr));
     }
   }
-  section a {
+  main ul li a {
     background-color: #FFF;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
@@ -85,17 +85,17 @@ main {
     margin-bottom: 30px;
   }
   
-  section a:hover {
+  main ul li a:hover {
     box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.5);
   }
   
-  section a img {
+  main ul li a img {
     width: 100%;
     max-width: 100%;
     grid-area: image;
   }
   
-  section a h2 {
+  main ul li a h2 {
     text-align: center;
     margin: 0;
     grid-area: title;
@@ -199,6 +199,7 @@ section article {
 section article img {
     width: 15%;
     margin-top: 10px;
+    min-width: 100px;
 }
 
 section article h2 {
@@ -207,9 +208,17 @@ section article h2 {
 }
 
 #description_album {
-    margin-left: 15%;
-    width: 85%;
-    text-align: center;
+    margin-left: 17%;
+    width: 82%;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+@media (max-width: 480px) {
+  #description_album {
+      width: 75%;
+      position: center;
+  }
 }
 
 section article p {
@@ -230,21 +239,21 @@ section article p {
     font-size: 1.2rem;
     margin-right: 10px;
 }
-.search button {
+.search input[type="submit"] {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #ffcd00;
+    background-color: #fff;
     color: black;
     font-size: 1.2rem;
     cursor: pointer;
     box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
 }
-.search button:hover {
-    background-color: #ffcd00;
+.search input[type="submit"]:hover {
+    background-color: black;
+    color: #ffcd00;
 }
 
-/*CSS Page comments*/ 
 article {
   margin: 20px;
   padding: 20px;

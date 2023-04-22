@@ -2,7 +2,8 @@
 <html>
     <?php 
         include 'assets/php/models/Traduction.php';
-        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $userLang = 'fr';
     ?>
     <head>
         <meta charset="utf-8"/>
@@ -37,8 +38,8 @@
 
         <section>
             <article>
-                <img id="img_album" src=<?php echo $album->getUri(); ?> alt="Pochette de l'album">
-                <h2 id="title_album"><?php echo $album->getTitle(); ?></h1><br/>
+                <img src=<?php echo $album->getUri(); ?> alt="Pochette de l'album">
+                <h2 id=><?php echo $album->getTitle(); ?></h1><br/>
                 <p><?php echo $album->getRank(); ?>/5</p>
             </article>
             <p id="description_album"><?php echo $album->getDescription(); ?></p>

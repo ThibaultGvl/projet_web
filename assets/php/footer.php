@@ -1,6 +1,7 @@
 <footer>
     <?php 
-        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $userLang = 'fr';
         if (isset($_SESSION['success_message'])) {
             echo '<p>' . $_SESSION['success_message'] . '</p>';
             unset($_SESSION['success_message']);

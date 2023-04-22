@@ -111,18 +111,15 @@ document.getElementById('email_form')
 
   function createAlbumElement(album) {
     const albumElem = document.createElement('a')
-    albumElem.classList.add('elem')
     albumElem.href = 'details.php?id=' + album.id
   
     const imgElem = document.createElement('img')
-    imgElem.classList.add('img_elem')
     imgElem.src = album.uri
     
     imgElem.alt = 'Pochette de l\'album'
     albumElem.appendChild(imgElem)
   
     const titElem = document.createElement('h2')
-    titElem.classList.add('tit_elem')
     titElem.textContent = album.title
     albumElem.appendChild(titElem)
   
@@ -146,15 +143,15 @@ document.getElementById('email_form')
       if (response.ok) {
         const albums = await response.json()
         console.log(albums)
-        const mainElem = document.querySelector('main')
-        const section = document.createElement('section')
+        const list = document.querySelector('main ul')
+        const elem = document.createElement('li')
         for (const albumJson of albums) {
           const album = JSON.parse(albumJson)
             console.log(album.id)
             const albumElem = createAlbumElement(album)
-            section.appendChild(albumElem)
+            elem.appendChild(albumElem)
         }
-        mainElem.insertBefore(section, affichBtn)
+        list.insertBefore(elem, affichBtn)
         affichBtn.setAttribute('data-page', page + 1)
       } else {
         console.error(response.statusText)

@@ -3,7 +3,8 @@
     <?php 
         include 'assets/php/models/Traduction.php';
         include 'assets/php/models/Comment.php';
-        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $userLang = 'fr';
     ?>
     <head>
         <meta charset="utf-8"/>
@@ -36,16 +37,16 @@
                 } else {
                     $msg = $emptyComment->getEn();
                 }
-                echo    '<article class="comment">'.
-                            '<h2 class="comment-author">'. 
+                echo    '<article>'.
+                            '<h2>'. 
                                 $msg .
                             '</h2>' .
                         '</article>';
             }
             else {
                 foreach ($comments as $comment) {
-                    echo '<article class="comment">'.
-                            '<h2 class="comment-author">'. 
+                    echo '<article>'.
+                            '<h2>'. 
                                 $comment->getUser() .
                             '</h2>' .
                             '<p class="comment-content">' .

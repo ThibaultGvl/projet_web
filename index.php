@@ -2,7 +2,8 @@
 <html>
     <?php 
         include 'assets/php/models/Traduction.php';
-        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+        $userLang = 'fr';
     ?>
     <head>
         <meta charset="utf-8"/>
@@ -40,7 +41,7 @@
         }
     ?>
     <body>
-        <h1 id="welcome">
+        <h1>
             <?php
                 $welcomeText = new Traduction("Bienvenue sur mon site de critique musicale!", "Welcome to my music review website!");
                 if (strpos($userLang, 'fr') !== false) {
@@ -50,48 +51,47 @@
                 }
             ?>
         </h1>
-        <div class="search">
-        <form id="search_form" action="index.php" method="GET">
-            <?php $search = new Traduction("Rechercher", "Search");
-                $search_trad = $search->getEn();
-                if (strpos($userLang, 'fr') !== false) {
-                    $search_trad = $search->getFr();
-                }
-            ?>
-            <input id="search_input" type="text" name="query" placeholder=<?php echo $search_trad, "...";?>>
-            <button type="submit"><?php echo $search_trad;?></button>
-            <p id="search_error">
-                <?php 
-                    if ($albumInex) {
-                        if (strpos($userLang, 'fr') !== false) {
-                            echo "Cet album n'a pas encore été noté";
-                        }
-                        else {
-                            echo "This album has not been rated yet";
-                        }
-                    }
-                    else {
-                        echo "";
+        <section class="search">
+            <form id="search_form" action="index.php" method="GET">
+                <?php $search = new Traduction("Rechercher", "Search");
+                    $search_trad = $search->getEn();
+                    if (strpos($userLang, 'fr') !== false) {
+                        $search_trad = $search->getFr();
                     }
                 ?>
-            </p>
-        </form>
-        </div>
-        <div class="page">
-            <main>
+                <input id="search_input" type="text" name="query" placeholder=<?php echo $search_trad, "...";?>>
+                <input type="submit" value=<?php echo $search_trad;?>>
+                <p id="search_error">
+                    <?php 
+                        if ($albumInex) {
+                            if (strpos($userLang, 'fr') !== false) {
+                                echo "Cet album n'a pas encore été noté";
+                            }
+                            else {
+                                echo "This album has not been rated yet";
+                            }
+                        }
+                        else {
+                            echo "";
+                        }
+                    ?>
+                </p>
+            </form>
+        </section>
+        <main>
+            <ul>
                 <?php for ($sec = 1; $sec < 4; $sec++): ?>
-                    <section class="bloc">
+                    <li>
                         <?php for($elem = 0; $elem < 3; $elem++): ?> 
                             <?php $index = ($sec - 1) * 3 + $elem; ?>
                             <?php if (isset($albums[$index])): ?>
-                                <a class="elem" href="details.php?id=<?php echo $albums[$index]->getId();?>">
-                                    <img class="img_elem" src=<?php echo $albums[$index]->getUri(); ?> alt="Pochette de l'album">
-                                    <h2 class="tit_elem"><?php echo $albums[$index]->getTitle(); ?></h2>
-                                    <!--p class="desc_elem"><?php echo $albums[$index]->getDescription(); ?></p!-->
+                                <a href="details.php?id=<?php echo $albums[$index]->getId();?>">
+                                    <img src=<?php echo $albums[$index]->getUri(); ?> alt="Pochette de l'album">
+                                    <h2><?php echo $albums[$index]->getTitle(); ?></h2>
                                 </a>
                             <?php endif; ?>
                         <?php endfor; ?>
-                    </section>
+                    </li>
                 <?php endfor; ?>
                     <button id="affich_btn" data-page="1">
                         <?php
@@ -103,8 +103,8 @@
                             } 
                         ?>
                     </button>
-            </main>
-        </div>
+            </ul>
+        </main>
 
         <?php include 'assets/php/footer.php'?>
     </body>

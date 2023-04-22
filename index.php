@@ -2,8 +2,7 @@
 <html>
     <?php 
         include 'assets/php/models/Traduction.php';
-        //$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
-        $userLang = 'fr';
+        $userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
     ?>
     <head>
         <meta charset="utf-8"/>
@@ -51,7 +50,7 @@
                 }
             ?>
         </h1>
-        <section class="search">
+        <section id="search">
             <form id="search_form" action="index.php" method="GET">
                 <?php $search = new Traduction("Rechercher", "Search");
                     $search_trad = $search->getEn();
@@ -86,7 +85,7 @@
                             <?php $index = ($sec - 1) * 3 + $elem; ?>
                             <?php if (isset($albums[$index])): ?>
                                 <a href="details.php?id=<?php echo $albums[$index]->getId();?>">
-                                    <img src=<?php echo $albums[$index]->getUri(); ?> alt="Pochette de l'album">
+                                    <img src=<?php echo $albums[$index]->getUri(); ?> alt="Pochette de l'album : " <?php echo $albums[$index]->getTitle()?>>
                                     <h2><?php echo $albums[$index]->getTitle(); ?></h2>
                                 </a>
                             <?php endif; ?>

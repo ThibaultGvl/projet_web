@@ -17,13 +17,11 @@ const emailListenerCallback = () => {
     emailErrorContainer.style.color = 'red'
     emailInput.style.backgroundColor = 'rgba(255, 0, 0, 0.1)'
     emailInput.style.borderColor = 'red'
-    emailInput.classList.add('error')
     emailHasError = true
   } else {
     emailErrorContainer.innerText = ''
     emailInput.style.backgroundColor = ''
     emailInput.style.borderColor = ''
-    emailInput.classList.remove('error')
     emailHasError = false
   }
 }
@@ -41,13 +39,11 @@ const commentListenerCallback = () => {
     commentError.style.color = 'red'
     commentInput.style.backgroundColor = 'rgba(255, 0, 0, 0.1)'
     commentInput.style.borderColor = 'red'
-    commentInput.classList.add('error')
     commentHasError = true
   } else {
     commentError.innerText = ''
     commentInput.style.backgroundColor = ''
     commentInput.style.borderColor = ''
-    commentInput.classList.remove('error')
     commentHasError = false
   }
 }
@@ -66,13 +62,11 @@ const nameListenerCallback = () => {
     nameError.style.color = 'red'
     nameInput.style.backgroundColor = 'rgba(255, 0, 0, 0.1)'
     nameInput.style.borderColor = 'red'
-    nameInput.classList.add('error')
     nameHasError = true
   } else {
     nameError.innerText = ''
     nameInput.style.backgroundColor = ''
     nameInput.style.borderColor = ''
-    nameInput.classList.remove('error')
     nameHasError = false
   }
 }

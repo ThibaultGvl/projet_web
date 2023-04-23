@@ -17,13 +17,12 @@
             ?>
         </title>
         <link rel="icon" href="assets/img/music-band.png">
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="assets/css/style.css" />
         <script src="assets/js/script.js" defer></script>
     </head>
     <?php 
         session_start();
-        include 'assets/php/header.php';
         require_once 'assets/php/models/Database.php';
         $db = new Database("assets/php/db/");
         $albums = $db->getAlbums();
@@ -40,6 +39,7 @@
         }
     ?>
     <body>
+        <?php include 'assets/php/header.php'; ?>
         <h1>
             <?php
                 $welcomeText = new Traduction("Bienvenue sur mon site de critique musicale!", "Welcome to my music review website!");
@@ -58,8 +58,8 @@
                         $search_trad = $search->getFr();
                     }
                 ?>
-                <input id="search_input" type="text" name="query" placeholder=<?php echo $search_trad, "...";?>>
-                <input type="submit" value=<?php echo $search_trad;?>>
+                <input id="search_input" type="text" name="query" placeholder=<?php echo $search_trad, "...";?> />
+                <input type="submit" value=<?php echo $search_trad;?> />
                 <p id="search_error">
                     <?php 
                         if ($albumInex) {
@@ -85,7 +85,15 @@
                             <?php $index = ($sec - 1) * 3 + $elem; ?>
                             <?php if (isset($albums[$index])): ?>
                                 <a href="details.php?id=<?php echo $albums[$index]->getId();?>">
-                                    <img src=<?php echo $albums[$index]->getUri(); ?> alt="Pochette de l'album : " <?php echo $albums[$index]->getTitle()?>>
+                                    <img src=<?php echo $albums[$index]->getUri(); ?> alt="
+                                        <?php
+                                            $cover = new Traduction("Pochette de l'album : ", "Cover of album : ");
+                                            $affich_cov = $cover->getEn();
+                                            if (strpos($userLang, 'fr') !== false) {
+                                                $affich_cov = $cover->getFr();
+                                            }
+                                            echo $affich_cov . $albums[$index]->getTitle();
+                                        ?>" />
                                     <h2><?php echo $albums[$index]->getTitle(); ?></h2>
                                 </a>
                             <?php endif; ?>

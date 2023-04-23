@@ -1,13 +1,24 @@
 <header>
+	<?php
+		$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
+	?>
 	<nav>
 		<a href="./index.php">
-			<img src="assets/img/music-band.png" alt="Icone groupe de musique"/>
+			<img src="assets/img/music-band.png" alt="
+				<?php
+					$icon = new Traduction("Icone groupe de musique", "Icon music band");
+					if (strpos($userLang, 'fr') !== false) {
+						echo $icon->getFr();
+					} else {
+						echo $icon->getEn();
+					} 
+				?>"
+			/>
 		</a>
 		<ul class="nav_list">
 			<li>
 				<a href="./index.php">
 					<?php
-						$userLang = Locale::acceptFromHttp($_SERVER['HTTP_ACCEPT_LANGUAGE']);
 						$home = new Traduction("Accueil", "Home");
 						if (strpos($userLang, 'fr') !== false) {
 							echo $home->getFr();
@@ -29,16 +40,18 @@
 					?>
 				</a>
 			</li>
-        	<li> <a href="./comments.php">
-			<?php
-					$comments = new Traduction("Avis", "Comments");
-					if (strpos($userLang, 'fr') !== false) {
-						echo $comments->getFr();
-					} else {
-						echo $comments->getEn();
-					} 
+        	<li> 
+				<a href="./comments.php">
+					<?php
+						$comments = new Traduction("Avis", "Comments");
+						if (strpos($userLang, 'fr') !== false) {
+							echo $comments->getFr();
+						} else {
+							echo $comments->getEn();
+						} 
 					?>
-			</a></li>
+				</a>
+			</li>
 		</ul>
 	</nav>
 </header>

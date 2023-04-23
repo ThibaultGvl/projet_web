@@ -37,8 +37,16 @@
 
         <section>
             <article>
-                <img src=<?php echo $album->getUri(); ?> alt="Pochette de l'album :"<?php echo $album->getTitle()?>>
-                <h2 id=><?php echo $album->getTitle(); ?></h1><br/>
+                <img src=<?php echo $album->getUri(); ?> alt="
+                <?php
+                    $cover_details = new Traduction("Pochette de l'album : ", "Cover of album : ");
+                    $affich_cov_details = $cover_details->getEn();
+                    if (strpos($userLang, 'fr') !== false) {
+                        $affich_cov_details = $cover_details->getFr();
+                    }
+                    echo $affich_cov_details . $album->getTitle();
+                ?>">
+                <h2><?php echo $album->getTitle(); ?></h2><br/>
                 <p><?php echo $album->getRank(); ?>/5</p>
             </article>
             <p id="description_album"><?php echo $album->getDescription(); ?></p>

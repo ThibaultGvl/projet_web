@@ -7,10 +7,12 @@ class Database {
 
 	private $pdo;
 
+	//Constructeur
 	function __construct($path) {
 		$this->pdo = $this->connect($path);
 	}
 
+	//Connexion à la base de données
 	function connect($path) {
 		if($this->pdo==null) {
 				$this->pdo = new PDO('sqlite:'. $path .'database.db');
@@ -34,6 +36,7 @@ class Database {
 		return $this->pdo;
 	}
 
+	//Insertion d'un album dans la bdd
 	public function insertAlbum($album) {
 		$sql = 'INSERT INTO albums(id, title, descript, artist, ranking, uri) '
 		. 'VALUES(:id, :title, :descript, :artist, :ranking, :uri)';
@@ -48,6 +51,7 @@ class Database {
 		$album->setId($this->pdo->lastInsertId());
 	}
 
+	//Insertion d'un commentaire dans la bdd
 	public function insertComment($comment) {
 		try {
 			$sql = 'INSERT INTO comments(email, user, comment) '
@@ -65,6 +69,7 @@ class Database {
 	
 	
 
+	//Récupération des albums présents dans la bdd
 	public function getAlbums() {
 		$stmt = $this->pdo->query('SELECT * FROM albums');
 		$albums = [];
@@ -76,6 +81,7 @@ class Database {
 		return $albums;
 	}
 
+	//Récupération des commentaires présents dans la bdd
 	public function getComments() {
 		$stmt = $this->pdo->query('SELECT * FROM comments');
 		$comments = [];
@@ -87,6 +93,7 @@ class Database {
 		return $comments;
 	}
 
+	//Récupération d'un album par son id
 	public function getAlbumById($id) {
 		$albums = $this->getAlbums();
 		$return = null;
@@ -102,6 +109,7 @@ class Database {
 		return $return;
 	}
 
+	//Récupération d'un album par son nom
 	public function getAlbumsByName($name) {
 		$albums = $this->getAlbums();
 		$albumsToReturn = [];
@@ -113,6 +121,7 @@ class Database {
 		return $albumsToReturn;
 	}
 
+	//Cette fonction retourne les prochains albums de la base de données en fonction du nombre d'éléments par page et du numéro de la page actuelle.
 	public function getAlbumsPaginated($perPage, $page) {
 		$albums = $this->getAlbums();
 		$albumsToReturn = [];
@@ -125,6 +134,7 @@ class Database {
 		return $albumsToReturn;
 	} 		
 
+	//Fonction d'initialisation de la base de données
 	private function initDatabase() {
         $stmt = $this->pdo->query('SELECT COUNT(*) FROM albums');
         $count = $stmt->fetchColumn();

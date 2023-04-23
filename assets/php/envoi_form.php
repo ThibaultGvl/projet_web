@@ -3,6 +3,7 @@ require_once 'models/Comment.php';
 require_once 'models/Database.php';
 
 session_start();
+//On vérifie les données tant en quantité qu'en qualité et on créé un nouveau commentaire si elles sont valides
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $name = $_POST['name'];

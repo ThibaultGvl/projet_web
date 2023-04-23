@@ -1,6 +1,7 @@
 <?php
 require_once 'models/Database.php';
 
+//On récupère les albums à partir de la base de données et on les renvoie sous forme de JSON, avec une pagination de 3 albums par page.
 $db = new Database('db/');
 $request_body = file_get_contents('php://input');
 $data = json_decode($request_body);
